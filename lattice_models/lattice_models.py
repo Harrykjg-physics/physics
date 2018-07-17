@@ -205,3 +205,4 @@ class SquareLattice2(Lattice):
         nn[7, :] = np.mod(i - 1 + n, n), np.mod(j + 1, m)
 
         return nn
+

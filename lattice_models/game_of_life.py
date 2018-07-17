@@ -74,3 +74,4 @@ if __name__=='__main__':
     ani = animation.FuncAnimation(
         fig, update, interval=anim_interval, blit=False)
     plt.show()
+

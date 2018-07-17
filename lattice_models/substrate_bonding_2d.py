@@ -192,3 +192,4 @@ if __name__ == '__main__':
     plt.xlabel('Temperature (eV)')
     plt.ylabel('Average number of bonds')
     plt.show()
+
