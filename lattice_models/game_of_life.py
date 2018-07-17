@@ -1,17 +1,16 @@
 from lattice_models import *
-from matplotlib import animation
+import matplotlib.pyplot as plt
 
 
 class GameOfLife:
-    """
-    Conway's Game of Life
-    """
     def __init__(self, n, m, lattice_type=SquareLattice2):
-        """
+        """ Conway's Game of Life
+
         Args:
             n (int): size y
             m (int): size x
-            lattice_type: valid Lattice object, default = SquareLattice2
+            lattice_type: valid lattice subclass, default = SquareLattice2
+
         """
 
         self.n, self.m = n, m
@@ -20,8 +19,7 @@ class GameOfLife:
             0, 2, self.n * self.m).reshape([self.n, self.m])
 
     def evolve_one_step(self):
-        """
-        Updates game by one step according to canonical rules - from wikipedia:
+        """Updates game by one step according to canonical rules - from wikipedia:
 
         'Any live cell with fewer than two live neighbors dies, as if by under population.
         Any live cell with two or three live neighbors lives on to the next generation.
@@ -50,6 +48,9 @@ class GameOfLife:
 
 
 if __name__=='__main__':
+    """Animated game of life (runs indefinitely)"""
+    from matplotlib import animation
+
     n, m, anim_interval = 20, 20, 80
     print("Conway's Game of Life")
     game = GameOfLife(n, m)
@@ -70,5 +71,6 @@ if __name__=='__main__':
         fig.suptitle('Step ' + str(steps))
         return im,
 
-    ani = animation.FuncAnimation(fig, update, interval=anim_interval, blit=True)
+    ani = animation.FuncAnimation(
+        fig, update, interval=anim_interval, blit=False)
     plt.show()
